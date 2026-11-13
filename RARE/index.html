@@ -377,30 +377,80 @@ const DATA = {
       gauge: { love: 0, heat: 18 }
     },
 
-    /* ---- 아래는 '바텀 밭' 분위기용 예시 프로필 (예시) ---- */
+    /* ---- 아래는 '바텀 밭' 분위기용 프로필 ---- */
     {
-      id: "ex1", nickname: "멜섭왕", example: true, matched: false,
+      id: "ex1", nickname: "멜섭왕", matched: false,
       age: 27, height: 178, gender: "남성", role: "섭", roles: ["섭"],
       distance: "0.3km", online: true, image: "",
-      bio: "(예시) 탑 3년째 찾는 중. 이 동네 탑은 전설로만 들었어요.",
+      bio: "탑 3년째 찾는 중. 이 동네 탑은 전설로만 들었어요.",
       tags: ["존댓말", "칭찬에 약함"],
       gauge: { love: 0, heat: 10 }
     },
     {
-      id: "ex2", nickname: "말랑푸딩", example: true, matched: false,
+      id: "ex2", nickname: "말랑푸딩", matched: false,
       age: 24, height: 163, gender: "여성", role: "섭", roles: ["섭"],
       distance: "2.1km", online: false, image: "",
-      bio: "(예시) 저도 바텀, 제 친구도 바텀, 친구의 친구도 바텀입니다.",
+      bio: "저도 바텀, 제 친구도 바텀, 친구의 친구도 바텀입니다.",
       tags: ["애교", "주말만"],
       gauge: { love: 0, heat: 8 }
     },
     {
-      id: "ex3", nickname: "무릎꿇는곰", example: true, matched: false,
+      id: "ex3", nickname: "무릎꿇는곰", matched: false,
       age: 31, height: 190, gender: "남성", role: "섭", roles: ["섭"],
       distance: "5.6km", online: true, image: "",
-      bio: "(예시) 덩치는 큰데 마음은 바닥입니다. 리드해 주실 분.",
+      bio: "덩치는 큰데 마음은 바닥입니다. 리드해 주실 분.",
       tags: ["반전", "듬직"],
       gauge: { love: 0, heat: 10 }
+    },
+
+    /* ---- 받은 메시지함에 쌓인 상대 (탐색 카드에는 안 나와요) ---- */
+    {
+      id: "n_polite", nickname: "정중한섭", matched: true, inboxOnly: true,
+      age: 28, height: 164, gender: "여성", role: "섭", roles: ["섭", "서브"],
+      distance: "0.8km", online: true, image: "",
+      bio: "예의를 먼저 챙기는 편이에요. 급하게 구는 건 잘 못해요.",
+      tags: ["존댓말", "천천히"],
+      gauge: { love: 0, heat: 7 }
+    },
+    {
+      id: "n_desperate", nickname: "새로고침중", matched: true, inboxOnly: true,
+      age: 26, height: 177, gender: "남성", role: "슬레이브", roles: ["바텀 / 서브", "슬레이브"],
+      distance: "4.2km", online: true, image: "",
+      bio: "탑 뜨면 알림 켜두는 그런 사람입니다.",
+      tags: ["헌신", "즉답 원함"],
+      gauge: { love: 0, heat: 16 }
+    },
+    {
+      id: "n_brat", nickname: "브랫인데", matched: true, inboxOnly: true,
+      age: 22, height: 159, gender: "여성", role: "브랫", roles: ["바텀 / 서브", "브랫"],
+      distance: "2.9km", online: true, image: "",
+      bio: "고분고분한 척은 못 해요. 그래도 리드가 없으면 더 못 해요.",
+      tags: ["브랫", "도발"],
+      gauge: { love: 0, heat: 14 }
+    },
+    {
+      id: "n_blunt", nickname: "여부만요", matched: true, inboxOnly: true,
+      age: 33, height: 181, gender: "남성", role: "서브", roles: ["서브"],
+      distance: "6.7km", online: false, image: "",
+      bio: "돌려 말하는 거 못 해요. 가능한지 아닌지만 알려 주세요.",
+      tags: ["단도직입", "룰 중시"],
+      gauge: { love: 0, heat: 9 }
+    },
+    {
+      id: "n_funny", nickname: "목격담실화", matched: true, inboxOnly: true,
+      age: 29, height: 173, gender: "남성", role: "섭", roles: ["섭"],
+      distance: "11km", online: false, image: "",
+      bio: "이 동네에서 탑 목격담만 듣고 살다가, 실물을 봐서 적었습니다.",
+      tags: ["유머", "관찰러"],
+      gauge: { love: 0, heat: 8 }
+    },
+    {
+      id: "n_shy", nickname: "소심한손", matched: true, inboxOnly: true,
+      age: 24, height: 169, gender: "남성", role: "서브", roles: ["서브"],
+      distance: "8.4km", online: false, image: "",
+      bio: "먼저 말 거는 게 아직 서툴러요. 천천히 가도 괜찮다면요.",
+      tags: ["수줍음", "천천히"],
+      gauge: { love: 0, heat: 6 }
     }
   ],
 
@@ -419,6 +469,48 @@ const DATA = {
       with: "dog",
       messages: [
         { from: "them", text: "ㅎㅇ 하드 어디까지 가능?", time: "방금 전" }
+      ]
+    },
+    {
+      with: "n_polite",
+      messages: [
+        { from: "them", text: "안녕하세요. 프로필 보고 연락드렸습니다.", time: "5분 전" },
+        { from: "them", text: "대화가 가능하실까요.", time: "3분 전" }
+      ]
+    },
+    {
+      with: "n_desperate",
+      messages: [
+        { from: "them", text: "진짜 탑이세요?", time: "20분 전" },
+        { from: "them", text: "답장만 해주시면 제가 맞출게요.", time: "15분 전" },
+        { from: "them", text: "오늘 하루 이 화면만 봤어요.", time: "12분 전" }
+      ]
+    },
+    {
+      with: "n_brat",
+      messages: [
+        { from: "them", text: "뭐야, 진짜 탑이야?", time: "40분 전" },
+        { from: "them", text: "귀엽게만 볼 거면 그냥 지나쳐요.", time: "28분 전" }
+      ]
+    },
+    {
+      with: "n_blunt",
+      messages: [
+        { from: "them", text: "탑 맞으면 남겨요.", time: "1시간 전" },
+        { from: "them", text: "시간 낭비는 싫어요. 여부만 답 주세요.", time: "1시간 전" }
+      ]
+    },
+    {
+      with: "n_funny",
+      messages: [
+        { from: "them", text: "와 실존하시네요.", time: "2시간 전" },
+        { from: "them", text: "멸종위기종 발견이라 자랑하고 싶지만 참을게요.", time: "2시간 전" }
+      ]
+    },
+    {
+      with: "n_shy",
+      messages: [
+        { from: "them", text: "저기요, 실례가 안 된다면요…", time: "어제" }
       ]
     }
   ],
@@ -461,7 +553,10 @@ const DATA = {
       if (raw) {
         var saved = JSON.parse(raw);
         for (var k in saved) if (saved.hasOwnProperty(k)) S[k] = saved[k];
+        if (!S.profiles) S.profiles = {};
+        if (!S.chats) S.chats = {};
         DATA.profiles.forEach(function (p) { if (!S.profiles[p.id]) S.profiles[p.id] = { matched: !!p.matched }; });
+        DATA.chats.forEach(function (c) { if (!S.chats[c.with]) S.chats[c.with] = clone(c.messages); });
         if (!S.read) S.read = {};
         if (S.me) { S.me.look = DATA.me.look; S.me.height = DATA.me.height; }
       }
@@ -572,13 +667,13 @@ const DATA = {
 
   var tickI = 0;
   function deckList() {
-    return DATA.profiles.filter(function (p) { return S.seen.indexOf(p.id) < 0; }).sort(function (a, b) { return (b.featured ? 1 : 0) - (a.featured ? 1 : 0); });
+    return DATA.profiles.filter(function (p) { return !p.inboxOnly && S.seen.indexOf(p.id) < 0; }).sort(function (a, b) { return (b.featured ? 1 : 0) - (a.featured ? 1 : 0); });
   }
   function cardHTML(p, top) {
     var body = p.height + "cm" + (p.weight ? " / " + p.weight + "kg" : "");
     return '<div class="card ' + (p.featured ? "featured " : "") + (top ? "topCard" : "back") + '" ' + (top ? 'data-act="openCard" data-id="' + p.id + '"' : "") + ">" +
       ph(p.image, p.nickname, p.id) + '<div class="shade"></div>' +
-      (p.featured ? '<span class="badge gold">★ 희귀 매치</span>' : p.example ? '<span class="badge ex">예시</span>' : "") +
+      (p.featured ? '<span class="badge gold">★ 희귀 매치</span>' : "") +
       (p.online ? '<span class="onl">● 접속 중</span>' : "") +
       '<span class="stamp like">LIKE</span><span class="stamp nope">PASS</span>' +
       '<div class="info"><div class="nm">' + esc(p.nickname) + "<small>" + p.age + "</small></div>" +
@@ -607,7 +702,7 @@ const DATA = {
     var info = [["성별 / 나이", p.gender + " · " + p.age + "세"], ["신체", bodyLine(p)], ["포지션", p.role], ["거리", p.distance || ""]];
     return '<section class="screen" id="profileScreen"><div class="hero">' + ph(p.image, p.nickname, p.id) + '<div class="shade"></div>' +
       '<button class="iconBtn back" data-act="back" aria-label="뒤로">←</button>' +
-      '<div class="hInfo"><div class="tags" style="margin-bottom:6px">' + (p.featured ? '<span class="tag" style="color:var(--gold);border-color:var(--gold)">★ 희귀 매치</span>' : "") + (p.example ? '<span class="tag">예시</span>' : "") + (st.matched ? '<span class="tag" style="color:var(--pink2);border-color:var(--pink)">매치됨</span>' : "") + "</div>" +
+      '<div class="hInfo"><div class="tags" style="margin-bottom:6px">' + (p.featured ? '<span class="tag" style="color:var(--gold);border-color:var(--gold)">★ 희귀 매치</span>' : "") + (st.matched ? '<span class="tag" style="color:var(--pink2);border-color:var(--pink)">매치됨</span>' : "") + "</div>" +
       '<div class="nm">' + esc(p.nickname) + ' <span style="font-weight:400;font-size:22px;color:#ccc">' + p.age + "</span></div>" +
       '<div class="tags" style="margin-top:8px">' + (p.roles || [p.role]).map(function (r) { return '<span class="tag role">' + esc(r) + "</span>"; }).join("") + "</div></div></div>" +
       '<div class="box"><h4>소개</h4><p>' + esc(p.bio) + "</p></div>" +
